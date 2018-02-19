@@ -16,7 +16,8 @@ You’ll need to have Node >= 6 on your local development machine (but it’s no
 ```npm create-react-app MyReads
 cd MyReads
 npm unstall
-npm start```
+npm start
+```
 
 To have ability save, search books in shelves need to include file _BooksAPI.js_ in folder _src/_
 
