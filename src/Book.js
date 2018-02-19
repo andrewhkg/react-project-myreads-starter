@@ -18,7 +18,12 @@ class Book extends Component {
     return (
       <div className="book">
         <div className="book-top">
-          <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
+          {/* added logic to check if image thumbnail existed or not (avoide in console error if thumnail doesnt exist first), and second, if not rendered image cover of book from placeholder.com */}
+          <div className="book-cover"
+            style={{ width: 128, height: 193,
+              backgroundImage: `url(${book.imageLinks && book.imageLinks.thumbnail?  `${book.imageLinks.thumbnail}` : `http://via.placeholder.com/128x193?text=No%20Cover`})`
+            }}>
+          </div>
           <div className="book-shelf-changer">
             <select value={book.shelf} onChange={(e) => {this.shelfChanger(book, e)}}>
               <option value="none" disabled>Move to...</option>
