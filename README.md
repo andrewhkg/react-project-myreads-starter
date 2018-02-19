@@ -1,6 +1,6 @@
 
-#Synopsis
-##MyReads Project - Allow to display books in 3 shelves: Currently Reading, Want to read and Read.
+# Synopsis
+## MyReads Project - Allow to display books in 3 shelves: Currently Reading, Want to read and Read.
 
 ## To get started developing right away:
 
