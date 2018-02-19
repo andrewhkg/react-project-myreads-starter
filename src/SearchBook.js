@@ -12,19 +12,19 @@ class SearchBook extends Component {
 
   search = (query) => {
     if (this.state.query === '') {
-      BooksAPI.search(query).then(
-        (books) => {
-          const savedBooks = this.props.savedBooks
-          let showBooks = books.map((book) => {
-            let temp = savedBooks.filter((savedBook) => book.id === savedBook.id)[0]
-            return (temp)? temp: book
-          })
-          this.setState({showBooks: showBooks})
-          this.setState({ query: query.trim()})
-        }
-      )
-    }
-  }
+    BooksAPI.search(query).then(
+      (books) => {
+        const savedBooks = this.props.savedBooks
+        let showBooks = books.map((book) => {
+          let temp = savedBooks.filter((savedBook) => book.id === savedBook.id)[0]
+          return (temp)? temp: book
+        })
+        this.setState({showBooks: showBooks})
+        this.setState({ query: query.trim()})
+      }
+    )
+ }
+}
 
   render() {
       const { showBooks } = this.state
@@ -39,12 +39,12 @@ class SearchBook extends Component {
           <div className="search-books-results">
             <ol className="books-grid">
                 {showBooks.map((book) =>
-                  <li key={book.id}>
-                    <Book
-                      book={book}
-                      onUpdateBook={this.props.onUpdateBook}
-                    />
-                  </li>
+                    <li key={book.id}>
+                      <Book
+                        book={book}
+                        onUpdateBook={this.props.onUpdateBook}
+                      />
+                    </li>
                 )}
             </ol>
           </div>
