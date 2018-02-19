@@ -21,6 +21,8 @@ npm unstall
 npm start
 ```
 
+### You Can see your app is running: http://localhost:3000/
+
 To have ability save, search books in shelves need to include file _BooksAPI.js_ in folder _src/_
 
 ### Important
