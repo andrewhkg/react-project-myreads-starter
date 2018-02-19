@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
-import { Route } from 'react-router-dom'
+import { Switch,Route } from 'react-router-dom'
 import BookLists from './BookLists'
 import SearchBook from './SearchBook'
+import ErrorPage404Name from './ErrorPage404Name'
 
 class BooksApp extends Component {
   state = {
@@ -27,15 +28,17 @@ updateBook = (book, newShelf) => {
   render() {
     return (
       <div className='app'>
-        <Route exact path="/" render={() => (
-          <BookLists
-            books={this.state.books}
-            onUpdateBook={(book, newShelf) => {
-              this.updateBook(book, newShelf)
-            }}
-          />
-        )}
-      />
+        <Switch>
+
+          <Route exact path="/" render={() => (
+            <BookLists
+              books={this.state.books}
+              onUpdateBook={(book, newShelf) => {
+                this.updateBook(book, newShelf)
+              }}
+            />
+          )}
+        />
         <Route path="/search" render={() => (
           <SearchBook
             savedBooks={this.state.books}
@@ -45,6 +48,9 @@ updateBook = (book, newShelf) => {
           />
         )}
       />
+      <Route component={ErrorPage404Name} />
+
+        </Switch>
       </div>
     )
   }
