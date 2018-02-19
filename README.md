@@ -1,6 +1,7 @@
 
 # Synopsis
-## MyReads Project - Allow to display books in 3 shelves: Currently Reading, Want to read and Read.
+## MyReads Project  
+#### Allow to display books in 3 shelves: Currently Reading, Want to read and Read.
 
 ## To get started developing right away:
 
@@ -13,7 +14,8 @@ or
 
 You’ll need to have Node >= 6 on your local development machine (but it’s not required on the server).
 
-```npm create-react-app MyReads
+```
+npm create-react-app MyReads
 cd MyReads
 npm unstall
 npm start
