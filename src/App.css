@@ -172,3 +172,23 @@ body, .app {
   text-align: center;
   font-size: 0.8em;
 }
+.notfound {
+  display: flex;
+  text-align: center;
+
+  justify-content: center;
+  width: 50%;
+  height: auto
+}
+.button {
+      width: 50%;
+      height: auto;
+      background-color: #f1f1f1;
+      color: black;
+      font-size: 16px;
+      padding: 16px 30px;
+      border: none;
+      cursor: pointer;
+      border-radius: 15px;
+      text-align: center
+}
