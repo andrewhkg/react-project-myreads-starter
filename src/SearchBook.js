@@ -11,20 +11,40 @@ class SearchBook extends Component {
   }
 
   search = (query) => {
-    if (this.state.query === '') {
-    BooksAPI.search(query).then(
-      (books) => {
-        const savedBooks = this.props.savedBooks
-        let showBooks = books.map((book) => {
-          let temp = savedBooks.filter((savedBook) => book.id === savedBook.id)[0]
-          return (temp)? temp: book
-        })
-        this.setState({showBooks: showBooks})
-        this.setState({ query: query.trim()})
-      }
-    )
- }
-}
+    if (query) {
+
+      BooksAPI.search(query).then((books) => {
+          if ("undefined" === typeof books.error) {
+
+            const savedBooks = this.props.savedBooks
+            let showBooks = books.map((book) => {
+              let temp = savedBooks.filter((savedBook) => book.id === savedBook.id)[0]
+              return (temp)? temp: book
+            })
+            this.setState({showBooks: showBooks})
+            this.setState({ query: query.trim()})
+          }
+        }
+      )
+    }
+
+  }
+
+//   search = (query) => {
+//     if (this.state.query === '') {
+//     BooksAPI.search(query).then(
+//       (books) => {
+//         const savedBooks = this.props.savedBooks
+//         let showBooks = books.map((book) => {
+//           let temp = savedBooks.filter((savedBook) => book.id === savedBook.id)[0]
+//           return (temp)? temp: book
+//         })
+//         this.setState({showBooks: showBooks})
+//         this.setState({ query: query.trim()})
+//       }
+//     )
+//  }
+// }
 
   render() {
       const { showBooks } = this.state
