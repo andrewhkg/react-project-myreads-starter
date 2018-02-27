@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import * as BooksAPI from './BooksAPI'
 import Book from './Book'
+import Nobook from './Nobook'
 import { Link } from 'react-router-dom'
 
 class SearchBook extends Component {
 
   state = {
     query: '',
-    showBooks: []
+    showBooks: [],
+    noBooksFound: false
   }
 
   search = (query) => {
@@ -23,6 +25,10 @@ class SearchBook extends Component {
             })
             this.setState({showBooks: showBooks})
             this.setState({ query: query.trim()})
+            this.setState({noBooksFound: false})
+          } else {
+            this.setState({noBooksFound: true})
+            this.setState({showBooks: []})
           }
         }
       )
@@ -31,7 +37,8 @@ class SearchBook extends Component {
   }
 
   render() {
-      const { showBooks } = this.state
+      const { showBooks, noBooksFound } = this.state
+      console.log("no books found", noBooksFound)
       return (
         <div className="search-books">
           <div className="search-books-bar">
@@ -42,14 +49,15 @@ class SearchBook extends Component {
           </div>
           <div className="search-books-results">
             <ol className="books-grid">
-                {showBooks.map((book) =>
-                    <li key={book.id}>
-                      <Book
-                        book={book}
-                        onUpdateBook={this.props.onUpdateBook}
-                      />
-                    </li>
+              { showBooks.map((book) =>
+                  <li key={book.id}>
+                    <Book
+                      book={book}
+                      onUpdateBook={this.props.onUpdateBook}
+                    />
+                  </li>
                 )}
+                <Nobook />
             </ol>
           </div>
         </div>
