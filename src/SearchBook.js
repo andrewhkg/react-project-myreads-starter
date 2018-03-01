@@ -49,15 +49,15 @@ class SearchBook extends Component {
           </div>
           <div className="search-books-results">
             <ol className="books-grid">
-              { showBooks.map((book) =>
+              { !noBooksFound ? showBooks.map((book) =>
                   <li key={book.id}>
                     <Book
                       book={book}
                       onUpdateBook={this.props.onUpdateBook}
                     />
                   </li>
-                )}
-                <Nobook />
+                ) :
+                <Nobook />}
             </ol>
           </div>
         </div>
